@@ -5,92 +5,188 @@
 }
 
 :root {
-  font-size: 62.5%;
+    --primary-color: #4B0082;
+    --secondary-color: #5d037e;
+    --highlight-color: #d3a9e3;
+    --text-color: #ffffff;
+    --background-light: #FEEAFA;
+    --font-primary: 'Staatliches', sans-serif;
+    --font-secondary: 'Palanquin', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--primary-color);
+    margin: 0;
+    padding: 0;
 }
 
 .page {
-  max-width: 42rem;
-  margin: 0 auto;
-  height: 199.5rem;
-  top: 0rem;
-  text-align: center;
-
-  background: #EFF1FF;
+    margin: 0 auto;
+    max-width: 42rem;
+    text-align: center;
 }
-
-main {
-  max-width: 30rem;
-  margin: auto;
-}
-
-header, img, h1 {
-  margin-top: 2.1rem;
-}
-
 
 header {
-  margin-top: 0rem; 
-  height: 27.9rem;
-  
-  background: #8E9AAF;
+    height: 100vh;
+    background: var(--secondary-color);
+    animation: fadeInDown 700ms;
 }
 
 h1 {
-  font-family: 'Staatliches';
-  font-weight: 400;
-  font-size: 4.0rem;
-  line-height: 3.4rem;
-  
-  letter-spacing: 0.05em;
-  
-  color: #FFFFFF;
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  
-  background: #CBC0D3;
-  padding: 0.7rem 0rem;
+    font-family: var(--font-primary);
+    font-size: 4rem;
+    line-height: 3.4rem;
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    background: var(--highlight-color);
+    padding: 0.7rem 0;
 }
 
-p {
-  font-family: 'Palanquin';
-  max-width: 30.0rem;
-  font-size: 1.3rem;
-  line-height: 1.5rem;
-  margin: 3.0rem auto 5.5rem;
-  
-  color: #23053A;
+main {
+    animation: fadeInUp 700ms;
 }
 
+p, .p2 {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+    margin: 2.8rem auto 5.5rem;
+    color: var(--text-color);
+}
+
+.p2 {
+    display: none;
+}
 
 .card {
-  position: relative;
+    position: relative;
+    margin: 0 auto;
 }
 
 .card h2 {
-  left: 19.5rem;
-  top: 3.7rem;
+    position: absolute;
+    left: 22.6rem;
+    top: 3.7rem;
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: #4A4E69;
+    background: var(--background-light);
+    border-radius: 20px;
+    padding: 1px 2.4rem;
+    animation: fadeInDown 700ms 150ms backwards;
 }
 
-.card img:hover {
-  transform: scale(1.1);
-}
-.card img {
-  transition-property: transform;
-  transition-duration: 0.6s;
-  max-width: 32rem;
+.allcards .card img {
+    animation: fadeInUp 700ms;
 }
 
-.card h2 {
-  position: absolute;
-  font-family: 'Staatliches';
-  font-weight: 400;
-  font-size: 2.0rem;
-  line-height: 3.4rem;
-  
-  letter-spacing: 0.05em;
-  
-  color: #4A4E69;
-  
-  background: #FEEAFA;
-  border-radius: 20px;
-  width: 11.2rem;
+#images5-6 {
+    display: none;
+}
+
+footer p {
+    color: white !important;
+    margin-top: 28px;
+}
+
+footer a {
+    color: white !important;
+}
+
+footer a:hover {
+    color: #ddd;
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 900px) {
+    .page {
+        width: 100%;
+        max-width: 128rem;
+        display: flex;
+    }
+
+    header {
+        position: absolute;
+        width: 37.7rem;
+        left: 0;
+        top: 0;
+    }
+
+    p {
+        display: none;
+    }
+
+    .p2 {
+        display: block;
+    }
+
+    .card h2 {
+        display: none;
+    }
+
+    .allcards {
+        width: 70rem;
+        display: grid;
+        grid-template-areas:
+            "A B C"
+            "D B F"
+            "D E F";
+        gap: 3.2rem;
+    }
+
+    .allcards div:nth-child(1) { grid-area: A; }
+    .allcards div:nth-child(2) { grid-area: B; }
+    .allcards div:nth-child(3) { grid-area: C; }
+    .allcards div:nth-child(4) { grid-area: D; }
+    .allcards div:nth-child(5) { grid-area: E; }
+    .allcards div:nth-child(6) { grid-area: F; }
+
+    #images5-6 {
+        display: block;
+    }
+
+    .card img {
+        width: 22rem;
+        transition: transform 500ms ease-in-out;
+    }
+
+    .card img:hover {
+        transform: scale(1.1);
+    }
+
+    footer p {
+        position: absolute;
+        display: block;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-left: 19.6rem;
+        color: black;
+    }
+
+    a {
+        text-decoration: none;
+        color: #5862a1;
+    }
+
+    a:hover {
+        color: black;
+    }
+
+    .main-footer {
+        margin-left: 48rem;
+        width: 90.3rem;
+    }
 }
