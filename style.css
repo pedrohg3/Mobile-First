@@ -2,85 +2,115 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
 
-:root {
-    --primary-color: #4B0082;
-    --secondary-color: #5d037e;
-    --highlight-color: #d3a9e3;
-    --text-color: #ffffff;
-    --background-light: #FEEAFA;
-    --font-primary: 'Staatliches', sans-serif;
-    --font-secondary: 'Palanquin', sans-serif;
-    font-size: 62.5%;
 }
 
 body {
-    background-color: var(--primary-color);
+    background-color: #4B0082; /* Cor roxa intensa */
     margin: 0;
     padding: 0;
+}
+
+:root {
+  font-size: 62.5%;
 }
 
 .page {
     margin: 0 auto;
     max-width: 42rem;
+    top: 0rem;
     text-align: center;
+
+}
+
+header, img, h1 {
+    margin-top: 2.1rem;
+
 }
 
 header {
+
+    margin-top: 0rem; 
     height: 100vh;
-    background: var(--secondary-color);
-    animation: fadeInDown 700ms;
+    
+    background: #5d037e;
+    
+    animation-name: topdown;
+    animation-duration: 700ms;
 }
 
 h1 {
-    font-family: var(--font-primary);
-    font-size: 4rem;
+    font-family: 'Staatliches';
+    font-weight: 400;
+    font-size: 4.0rem;
     line-height: 3.4rem;
+    
     letter-spacing: 0.05em;
-    color: var(--text-color);
+    
+    color: #FFFFFF;
     text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    background: var(--highlight-color);
-    padding: 0.7rem 0;
+    
+    background: #d3a9e3;
+    padding: 0.7rem 0rem;
 }
 
 main {
-    animation: fadeInUp 700ms;
+    
+    animation-name: downtop;
+    animation-duration: 700ms;
 }
 
-p, .p2 {
-    font-family: var(--font-secondary);
+p {
+
+    font-family: 'Palanquin';
+    width: 30rem;
     font-size: 1.5rem;
     line-height: 1.6rem;
+    margin-top: 2.8rem;
+    margin-bottom: 5.5rem;
     margin: 2.8rem auto 5.5rem;
-    color: var(--text-color);
+
+    color: #ffffff;
 }
 
 .p2 {
+    font-family: 'Palanquin';
+    width: 27.5rem;
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+    margin: 3.2rem auto 0;
+    
+    color: #ffffff;
     display: none;
 }
 
 .card {
+
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto; 
 }
 
 .card h2 {
     position: absolute;
     left: 22.6rem;
     top: 3.7rem;
-    font-family: var(--font-primary);
-    font-size: 2rem;
+    
+    font-family: 'Staatliches';
+    font-weight: 400;
+    font-size: 2.0rem;
+    line-height: 3.4rem;
     letter-spacing: 0.05em;
+    
     color: #4A4E69;
-    background: var(--background-light);
+    
+    background: #FEEAFA;
     border-radius: 20px;
     padding: 1px 2.4rem;
-    animation: fadeInDown 700ms 150ms backwards;
+    animation: topdown 700ms 150ms backwards;
 }
 
 .allcards .card img {
-    animation: fadeInUp 700ms;
+    animation: downtop 700ms;
 }
 
 #images5-6 {
@@ -97,31 +127,45 @@ footer a {
 }
 
 footer a:hover {
-    color: #ddd;
+    color: #ddd; /* Altera a cor ao passar o mouse, opcional */
+}
+    
+@keyframes topdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+@keyframes downtop {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (min-width: 900px) {
     .page {
-        width: 100%;
-        max-width: 128rem;
+        margin: 0;
+        width: 128rem;
         display: flex;
     }
 
     header {
-        position: absolute;
+        position:absolute;
         width: 37.7rem;
-        left: 0;
-        top: 0;
+        left: 0px;
+        top: 0px;
     }
 
     p {
@@ -133,47 +177,69 @@ footer a:hover {
     }
 
     .card h2 {
-        display: none;
+      display: none;
     }
 
     .allcards {
         width: 70rem;
-        display: grid;
+        justify-content: space-around;
+        display: grid;      
         grid-template-areas:
             "A B C"
             "D B F"
             "D E F";
-        gap: 3.2rem;
+    
+        padding: 0;
+        gap: 3.2rem; 
     }
 
-    .allcards div:nth-child(1) { grid-area: A; }
-    .allcards div:nth-child(2) { grid-area: B; }
-    .allcards div:nth-child(3) { grid-area: C; }
-    .allcards div:nth-child(4) { grid-area: D; }
-    .allcards div:nth-child(5) { grid-area: E; }
-    .allcards div:nth-child(6) { grid-area: F; }
-
+    .allcards div:nth-child(1) {
+        grid-area: A;
+    }
+    
+    .allcards div:nth-child(2) {
+        grid-area: B;
+    }
+    
+    .allcards div:nth-child(3) {
+        grid-area: C;
+    }
+    
+    .allcards div:nth-child(4) {
+        grid-area: D;
+    }
+    
+    .allcards div:nth-child(5) {
+        grid-area: E;
+    }
+    
+    .allcards div:nth-child(6) {
+        grid-area: F;
+    }
+    
     #images5-6 {
         display: block;
     }
 
     .card img {
         width: 22rem;
-        transition: transform 500ms ease-in-out;
+        transition: transform;
+        transition-duration: 500ms;    
     }
 
     .card img:hover {
-        transform: scale(1.1);
+        transform:scale(1.1);
     }
 
     footer p {
         position: absolute;
         display: block;
         font-family: sans-serif;
-        font-weight: bold;
+        font-style: bold;
         font-size: 1.3rem;
         margin-left: 19.6rem;
-        color: black;
+        
+        color: #000000;
     }
 
     a {
@@ -182,11 +248,15 @@ footer a:hover {
     }
 
     a:hover {
-        color: black;
+        color: #000000;
     }
 
     .main-footer {
         margin-left: 48rem;
         width: 90.3rem;
+    }
+
+    .page {
+        height: 0;
     }
 }
